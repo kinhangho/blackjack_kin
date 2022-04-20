@@ -1,4 +1,5 @@
 import random
+from termios import FF1
 
 playerIn = True
 dealerIn = True
@@ -11,6 +12,7 @@ def dealcard(turn):
     card = random.choice(deck)
     turn.append(card)
     deck.remove(card)
+
 
 def total(turn):
     total = 0
@@ -59,11 +61,11 @@ if total(player) == 21:
     print(f"\nYou have {player} for a total of {total(player)} and dealer has {total(dealer)}")
     print("Blackjack! You are the winner")
 elif total(dealer) == 21:
-    print("Good bye!!! Dealer has {total(dealer)}, Blackjack")
+    print(F"Good bye!!! Dealer has {total(dealer)}, Blackjack")
 elif total(player) > 21:
     print("You lose, bust")
 elif total(dealer) > 21:
-    print("You win, dealer bust")
+    print(f"You win, You have {total(player)} and dealer bust")
 elif 21 - total(dealer) < 21 - total(player):
     print(f"\nYou have {player} for a total of {total(player)} and dealer has {total(dealer)}")
     print("Dealer wins!!")
